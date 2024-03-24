@@ -1,7 +1,4 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-    appDir: true,
-    serverComponentsExternalPackages: ['@tremor/react']
-};
+const nextConfig = {};
 
 export default nextConfig;
