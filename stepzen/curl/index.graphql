@@ -92,6 +92,7 @@ type Root {
   utc_offset_seconds: Int
 }
 
+
 type Query {
   myQuery(
     current_weather: String
