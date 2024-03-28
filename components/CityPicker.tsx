@@ -8,11 +8,11 @@ import { GlobeIcon } from "@heroicons/react/solid";
 
 type option = {
   value: {
-    latitude: string,
-    longitude: string,
-    isoCode: string,
-  },
-  label: string,
+    latitude: string;
+    longitude: string;
+    isoCode: string;
+  };
+  label: string;
 } | null;
 
 type optionCity = {
@@ -42,21 +42,22 @@ const optionsCity = City.getAllCities().map((city) => ({
   },
   label: city.name,
 }));
+
 const CityPicker = () => {
   const [selectedCountry, setSelectedCountry] = useState<option>(null);
   const [selectedCity, setSelectedCity] = useState<optionCity>(null);
   const router = useRouter();
 
-
-
   const handleSelectedCountry = (option: option) => {
     setSelectedCountry(option);
+    console.log("selected country", option);
     setSelectedCity(null);
-
-  }
+  };
   const handleSelectedCity = (option: optionCity) => {
     setSelectedCity(option);
-    router.push(`location/${option?.value.name}/${option?.value.latitude}/${option?.value.longitude}`)
+    router.push(`/location/${option?.value.name}/${option?.value.latitude}/${option?.value.longitude}`
+      
+    );
   };
 
   return (
