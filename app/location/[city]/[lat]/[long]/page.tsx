@@ -30,14 +30,14 @@ async function WeatherPage({ params: { city, lat, long } }: Props) {
   console.log(results);
 
   return (
-    <div>
+    <div className="flex flex-col min-h-screen md:flex-row">
       <InformationPanel
         city={city}
         lat={lat}
         long={long}
         results={results} />
 
-      <div>
+      <div className="flex-1 p-5 lg:p-10">
         <div className="p-5">
           <div className="pb-5">
             <h2 className="text-xl font-bold">Todays Overview</h2>
@@ -68,7 +68,7 @@ async function WeatherPage({ params: { city, lat, long } }: Props) {
                 metric={`${results.daily.uv_index_max?.[0].toFixed(1)}`}
                 color="rose"
               />
-              {Number(results.daily.uv_index_max[0].toFixed(1)) > 0 && (
+              {Number(results.daily.uv_index_max[0].toFixed(1)) > 5 && (
                 <CalloutCard
                   message="The UV is high today, be sure to wear SPF!"
                   warning
