@@ -3,7 +3,6 @@ import { ApolloClient, InMemoryCache } from "@apollo/client";
 let client: ApolloClient<any> | null = null;
 
 export const getClient = () => {
-  console.log(process.env.API_URL);
   client = new ApolloClient({
     uri: process.env.API_URL,
     cache: new InMemoryCache(),

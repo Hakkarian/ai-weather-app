@@ -1,9 +1,13 @@
 import { getClient } from "@/apollo-client";
 import CalloutCard from "@/components/CalloutCard";
+import TempChartCard from "@/components/TempChartCard";
 import InformationPanel from "@/components/InformationPanel";
 import StatCard from "@/components/StatCard";
 import fetchWeatherQuery from "@/graphql/queries/fetchWeatherQueries";
 import { Callout } from "@tremor/react";
+import RainChartCard from "@/components/RainChartCard";
+import HumidityChartCard from "@/components/ChartCard";
+import ChartCard from "@/components/ChartCard";
 
 type Props = {
   params: {
@@ -31,11 +35,7 @@ async function WeatherPage({ params: { city, lat, long } }: Props) {
 
   return (
     <div className="flex flex-col min-h-screen md:flex-row">
-      <InformationPanel
-        city={city}
-        lat={lat}
-        long={long}
-        results={results} />
+      <InformationPanel city={city} lat={lat} long={long} results={results} />
 
       <div className="flex-1 p-5 lg:p-10">
         <div className="p-5">
@@ -90,10 +90,10 @@ async function WeatherPage({ params: { city, lat, long } }: Props) {
           </div>
         </div>
         <hr className="mb-5" />
-        <div className="space-y-3">
-          {/* TempChart */}
-          {/* RainChart */}
-          {/* HumidityChart */}
+        <div className="space-y-3 pr-7 pl-7 mt-7">
+          <ChartCard results={results} type={"temperature"} />
+          <ChartCard results={results} type={"rain"} />
+          <ChartCard results={results} type={"humidity"} />
         </div>
       </div>
     </div>

@@ -100,7 +100,6 @@ function InformationPanel({ city, lat, long, results }: Props) {
             </div>
           </li>
         </ul>
-        <div></div>
       </div>
     </div>
   );
