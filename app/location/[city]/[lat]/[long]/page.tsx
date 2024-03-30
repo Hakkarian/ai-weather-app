@@ -1,13 +1,13 @@
 import { getClient } from "@/apollo-client";
 import CalloutCard from "@/components/CalloutCard";
-import TempChartCard from "@/components/TempChartCard";
 import InformationPanel from "@/components/InformationPanel";
 import StatCard from "@/components/StatCard";
 import fetchWeatherQuery from "@/graphql/queries/fetchWeatherQueries";
 import { Callout } from "@tremor/react";
-import RainChartCard from "@/components/RainChartCard";
 import HumidityChartCard from "@/components/ChartCard";
 import ChartCard from "@/components/ChartCard";
+
+export const revalidate = 60;
 
 type Props = {
   params: {
