@@ -6,6 +6,8 @@ import fetchWeatherQuery from "@/graphql/queries/fetchWeatherQueries";
 import { Callout } from "@tremor/react";
 import HumidityChartCard from "@/components/ChartCard";
 import ChartCard from "@/components/ChartCard";
+import getBasePath from "@/lib/getBasePath";
+import cleanData from "@/lib/cleanData";
 
 export const revalidate = 60;
 
@@ -31,7 +33,6 @@ async function WeatherPage({ params: { city, lat, long } }: Props) {
   });
 
   const results: Root = data.myQuery;
-  console.log(results);
 
   return (
     <div className="flex flex-col min-h-screen md:flex-row">
@@ -47,9 +48,9 @@ async function WeatherPage({ params: { city, lat, long } }: Props) {
               {results.timezone})
             </p>
           </div>
-          <div className="mb-10 m-2">
-            <CalloutCard message="This is where GPT-summary will go" />
-          </div>
+          {/* <div className="mb-10 m-2">
+            <CalloutCard message="GPT-summary - coming soon!" />
+          </div> */}
           <div className="grid grid-cols-1 xl:grid-cols-2 gap-5 m-2">
             <StatCard
               title="Maximum temperature"
