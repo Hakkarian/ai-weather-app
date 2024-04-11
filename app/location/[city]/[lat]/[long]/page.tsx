@@ -32,7 +32,32 @@ async function WeatherPage({ params: { city, lat, long } }: Props) {
     },
   });
 
+  /* `const results: Root = data.myQuery;` is extracting the data from the GraphQL query response
+  stored in the `data` object and assigning it to a variable `results` of type `Root`. This allows
+  you to access and work with the specific data fields returned by the query in a strongly-typed
+  manner, ensuring that the data is correctly structured according to the defined type `Root`. */
   const results: Root = data.myQuery;
+
+  /* `const dataToSend = cleanData(results, city);` is calling the `cleanData` function with `results`
+  and `city` as arguments and storing the returned value in the `dataToSend` variable. The purpose
+  of this line is to clean and process the data obtained from the GraphQL query response (`results`)
+  specific to the provided `city`. The `cleanData` function likely performs data cleaning,
+  formatting, or transformation operations on the raw data to prepare it for display or further
+  processing in the component. */
+  const dataToSend = cleanData(results, city);
+
+  const res = await fetch(`${getBasePath()}/api/getWeatherSummary`, {
+    method: 'POST',
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      weatherData: dataToSend
+    })
+  })
+  
+  const GPTdata = await res.json();
+  const { content } = GPTdata;
 
   return (
     <div className="flex flex-col min-h-screen md:flex-row">
@@ -48,9 +73,9 @@ async function WeatherPage({ params: { city, lat, long } }: Props) {
               {results.timezone})
             </p>
           </div>
-          {/* <div className="mb-10 m-2">
-            <CalloutCard message="GPT-summary - coming soon!" />
-          </div> */}
+          <div className="mb-10 m-2">
+            <CalloutCard message={content} />
+          </div>
           <div className="grid grid-cols-1 xl:grid-cols-2 gap-5 m-2">
             <StatCard
               title="Maximum temperature"
@@ -79,7 +104,7 @@ async function WeatherPage({ params: { city, lat, long } }: Props) {
             <div className="flex space-x-3">
               <StatCard
                 title="Wind Speed"
-                metric={`${results.current_weather.windspeed.toFixed(1)}m/s`}
+                metric={`${results.current_weather.windspeed.toFixed(1)}km/h`}
                 color="violet"
               />
               <StatCard

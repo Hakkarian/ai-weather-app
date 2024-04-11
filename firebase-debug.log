@@ -1,0 +1,21 @@
+[debug] [2024-04-08T13:42:33.651Z] ----------------------------------------------------------------------
+[debug] [2024-04-08T13:42:33.655Z] Command:       D:\Node\node.exe C:\Users\Teodor Badarla\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2024-04-08T13:42:33.656Z] CLI Version:   13.6.0
+[debug] [2024-04-08T13:42:33.656Z] Platform:      win32
+[debug] [2024-04-08T13:42:33.657Z] Node Version:  v19.6.0
+[debug] [2024-04-08T13:42:33.657Z] Time:          Mon Apr 08 2024 14:42:33 GMT+0100 (British Summer Time)
+[debug] [2024-04-08T13:42:33.657Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-04-08T13:42:33.671Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-04-08T13:42:33.672Z] > authorizing via signed-in user (theobadar@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  D:\GitHUB3\ai-weather-app
+
