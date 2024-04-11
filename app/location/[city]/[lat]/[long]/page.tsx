@@ -7,6 +7,7 @@ import { Callout } from "@tremor/react";
 import HumidityChartCard from "@/components/ChartCard";
 import ChartCard from "@/components/ChartCard";
 import cleanData from "@/lib/cleanData";
+import getBasePath from "@/lib/getBasePath";
 
 export const revalidate = 60;
 
@@ -33,6 +34,21 @@ async function WeatherPage({ params: { city, lat, long } }: Props) {
 
   const results: Root = data.myQuery;
 
+  const dataToSend = cleanData(results, city);
+  
+  const res = await fetch(`${getBasePath()}/api/getWeatherSummary`, {
+    method: 'POST',
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      weatherData: dataToSend
+    })
+  })
+
+  const GPTdata = await res.json();
+  const { content } = GPTdata;
+
 
   return (
     <div className="flex flex-col min-h-screen md:flex-row">
@@ -49,7 +65,7 @@ async function WeatherPage({ params: { city, lat, long } }: Props) {
             </p>
           </div>
           <div className="mb-10 m-2">
-            <CalloutCard message="GPT-summary - coming soon!" />
+            <CalloutCard message={content} />
           </div>
           <div className="grid grid-cols-1 xl:grid-cols-2 gap-5 m-2">
             <StatCard
