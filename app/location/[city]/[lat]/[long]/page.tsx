@@ -33,6 +33,7 @@ async function WeatherPage({ params: { city, lat, long } }: Props) {
 
   const results: Root = data.myQuery;
 
+
   return (
     <div className="flex flex-col min-h-screen md:flex-row">
       <InformationPanel city={city} lat={lat} long={long} results={results} />
@@ -48,11 +49,8 @@ async function WeatherPage({ params: { city, lat, long } }: Props) {
             </p>
           </div>
           <div className="mb-10 m-2">
-            <CalloutCard message={"Some content"} />
-          </div>
-          {/* <div className="mb-10 m-2">
             <CalloutCard message="GPT-summary - coming soon!" />
-          </div> */}
+          </div>
           <div className="grid grid-cols-1 xl:grid-cols-2 gap-5 m-2">
             <StatCard
               title="Maximum temperature"
