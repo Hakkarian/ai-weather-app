@@ -1,7 +1,7 @@
 import openai from "@/openai";
 import { NextResponse } from "next/server";
 
-const POST = async (request: Request) => {
+export const POST = async (request: Request) => {
     const { weatherData } = await request.json();
      const data = await openai.chat.completions.create({
        model: "gpt-3.5-turbo",
